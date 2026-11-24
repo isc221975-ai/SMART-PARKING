@@ -1,0 +1,17 @@
+node_modules
+.next
+out
+.env*.local
+.env
+*.tsbuildinfo
+next-env.d.ts
+.DS_Store
+.vercel
+hardware/scanner/venv/
+hardware/scanner/.env
+hardware/scanner/logs/
+hardware/scanner/camera_config.json
+.env.*
+!.env.example
+__pycache__/
+*.pyc

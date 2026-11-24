@@ -1,0 +1,7 @@
+# Probado con Python 3.12 a 3.14 en Windows
+opencv-python>=4.10,<5
+numpy>=2.1
+requests>=2.32,<3
+python-dotenv>=1.0,<2
+pyserial>=3.5,<4
+pyzbar==0.1.9

@@ -1,0 +1,191 @@
+@import "tailwindcss";
+
+/* Tema oscuro por atributo: <html data-theme="dark"> o clase .dark */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *, .dark, .dark *));
+
+/* ───────── Paleta Smart Parking ───────── */
+:root {
+  --color-bg: #F6F8FB;
+  --color-surface: #FFFFFF;
+  --color-muted: #EBF0F7;
+  --color-border: #D5DEEA;
+  --color-ink: #0D1B2E;
+  --color-ink2: #4E5F77;
+  --color-primary: #066CBA;
+  --color-on-primary: #FFFFFF;
+  --color-accent: #18B472;
+  --color-on-accent: #04241A;
+  --color-success: #12804F;
+  --color-warning: #A9650B;
+  --color-danger: #C4302B;
+  /* Serie única de las gráficas (validada contra el fondo de tarjeta en claro y oscuro). */
+  --color-chart: #066CBA;
+  --font-display: "Sora Variable", "Sora", system-ui, sans-serif;
+  --font-body: "Public Sans Variable", "Public Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  --ease-out-weighted: cubic-bezier(0.22, 1, 0.36, 1);
+  color-scheme: light;
+}
+
+.dark,
+[data-theme="dark"] {
+  --color-bg: #0A1424;
+  --color-surface: #101D31;
+  --color-muted: #16263D;
+  --color-border: #263852;
+  --color-ink: #EAF1FB;
+  --color-ink2: #98A9C1;
+  --color-primary: #4D9DEB;
+  --color-on-primary: #03111F;
+  --color-accent: #2ED18A;
+  --color-on-accent: #03170E;
+  --color-success: #3FCB82;
+  --color-warning: #F0B44C;
+  --color-danger: #F26F5F;
+  --color-chart: #3B8CDB;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-bg: var(--color-bg);
+  --color-surface: var(--color-surface);
+  --color-muted: var(--color-muted);
+  --color-border: var(--color-border);
+  --color-ink: var(--color-ink);
+  --color-ink2: var(--color-ink2);
+  --color-primary: var(--color-primary);
+  --color-on-primary: var(--color-on-primary);
+  --color-accent: var(--color-accent);
+  --color-on-accent: var(--color-on-accent);
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-danger: var(--color-danger);
+  /* Texto sobre fondos tintados (badges, iniciales): el color del rol mezclado con ink para llegar a AA. */
+  --color-primary-ink: color-mix(in srgb, var(--color-primary) 78%, var(--color-ink));
+  --color-success-ink: color-mix(in srgb, var(--color-success) 78%, var(--color-ink));
+  --color-warning-ink: color-mix(in srgb, var(--color-warning) 78%, var(--color-ink));
+  --color-danger-ink: color-mix(in srgb, var(--color-danger) 78%, var(--color-ink));
+  --font-display: var(--font-display);
+  --font-sans: var(--font-body);
+  --font-mono: var(--font-mono);
+  --ease-weighted: var(--ease-out-weighted);
+}
+
+/* ───────── Estilos de texto con nombre (escala de Tailwind) ───────── */
+@utility heading-1 { font-family: var(--font-display); font-size: 2.25rem; line-height: 2.5rem; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance;
+  @media (width >= 48rem) { font-size: 3.75rem; line-height: 1; } }
+@utility heading-2 { font-family: var(--font-display); font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; letter-spacing: -0.02em; text-wrap: balance;
+  @media (width >= 48rem) { font-size: 3rem; line-height: 1; } }
+@utility heading-3 { font-family: var(--font-display); font-size: 1.875rem; line-height: 2.25rem; font-weight: 600; letter-spacing: -0.015em; text-wrap: balance;
+  @media (width >= 48rem) { font-size: 2.25rem; line-height: 2.5rem; } }
+@utility heading-4 { font-family: var(--font-display); font-size: 1.5rem; line-height: 2rem; font-weight: 600; letter-spacing: -0.01em; text-wrap: balance;
+  @media (width >= 48rem) { font-size: 1.875rem; line-height: 2.25rem; } }
+@utility heading-5 { font-family: var(--font-display); font-size: 1.5rem; line-height: 2rem; font-weight: 600; text-wrap: balance; }
+@utility heading-6 { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.75rem; font-weight: 600; text-wrap: balance; }
+@utility title-1 { font-size: 1.25rem; line-height: 1.75rem; font-weight: 500; }
+@utility title-2 { font-size: 1.125rem; line-height: 1.75rem; font-weight: 500; }
+@utility title-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; }
+@utility title-4 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
+@utility title-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
+@utility body-1 { font-size: 1rem; line-height: 1.5rem; font-weight: 600; text-wrap: pretty; }
+@utility body-2 { font-size: 1rem; line-height: 1.5rem; font-weight: 500; text-wrap: pretty; }
+@utility body-3 { font-size: 1rem; line-height: 1.5rem; font-weight: 400; text-wrap: pretty; }
+@utility body-4 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; text-wrap: pretty; }
+@utility body-5 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; text-wrap: pretty; }
+@utility body-6 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; text-wrap: pretty; }
+@utility button-lg { font-size: 1.125rem; line-height: 1.75rem; font-weight: 600; }
+@utility button-md { font-size: 1rem; line-height: 1.5rem; font-weight: 600; }
+@utility button-sm { font-size: 0.875rem; line-height: 1.25rem; font-weight: 600; }
+@utility caption-1 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 500; }
+@utility caption-2 { font-size: 0.875rem; line-height: 1.25rem; font-weight: 400; }
+@utility caption-3 { font-size: 0.75rem; line-height: 1rem; font-weight: 600; }
+@utility caption-4 { font-size: 0.75rem; line-height: 1rem; font-weight: 500; }
+@utility caption-5 { font-size: 0.75rem; line-height: 1rem; font-weight: 400; }
+
+/* Degradado del encabezado principal (solo texto, nunca fondos) */
+@utility text-hero-gradient {
+  background-image: linear-gradient(90deg, var(--color-ink) 0%, var(--color-ink2) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection { background: color-mix(in srgb, var(--color-primary) 25%, transparent); }
+  :focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; border-radius: 4px; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition-duration: 1ms !important; animation-duration: 1ms !important; }
+  }
+}
+
+/* Revelado al hacer scroll: sube 32px y aparece una sola vez */
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity 700ms var(--ease-out-weighted), transform 700ms var(--ease-out-weighted); }
+.reveal[data-visible="true"] { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .reveal { transform: none; } }
+
+/* Esqueleto de carga */
+.skeleton { background: var(--color-muted); border-radius: 8px; animation: pulse 1.6s var(--ease-out-weighted) infinite; }
+@keyframes pulse { 50% { opacity: 0.55; } }
+
+/* Indicador de punto "en vivo" */
+@keyframes ping-soft { 0% { transform: scale(1); opacity: 0.6; } 100% { transform: scale(2.4); opacity: 0; } }
+.live-dot::after { content: ""; position: absolute; inset: 0; border-radius: 9999px; background: currentColor; animation: ping-soft 1.8s var(--ease-out-weighted) infinite; }
+
+/* ───────── Diálogos y menús del shell ───────── */
+/* Evita que el desplazamiento dentro o sobre el diálogo mueva la página de fondo. */
+dialog:modal { overscroll-behavior: contain; }
+dialog::backdrop { overflow: hidden; overscroll-behavior: contain; }
+
+@media (prefers-reduced-motion: no-preference) {
+  dialog.sp-dialog[open] { animation: sp-dialog-in 300ms var(--ease-out-weighted); }
+}
+@keyframes sp-dialog-in { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
+
+/* Menú de cuenta anclado a su botón; se voltea si no cabe. */
+.sp-menu {
+  margin: 0;
+  inset: auto;
+  position-area: block-end span-inline-start;
+  position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+  margin-block: 8px;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sp-menu {
+    opacity: 0;
+    translate: 0 -4px;
+    transition: opacity, translate, display, overlay;
+    transition-duration: 150ms;
+    transition-timing-function: var(--ease-out-weighted);
+    transition-behavior: allow-discrete;
+  }
+  .sp-menu:popover-open {
+    opacity: 1;
+    translate: 0 0;
+    transition-duration: 100ms;
+    @starting-style { opacity: 0; translate: 0 -4px; }
+  }
+}
+
+/* Aparición discreta de tarjetas al cargar (sin movimiento si se pide reducirlo). */
+@media (prefers-reduced-motion: no-preference) {
+  .sp-rise { animation: sp-rise 500ms var(--ease-out-weighted) both; }
+  .sp-rise:nth-child(2) { animation-delay: 60ms; }
+  .sp-rise:nth-child(3) { animation-delay: 120ms; }
+  .sp-rise:nth-child(n + 4) { animation-delay: 180ms; }
+}
+@keyframes sp-rise { from { opacity: 0; transform: translateY(12px); } }
+
+/* Cuenta regresiva de la captura facial: cada número aparece con un pulso breve. */
+@media (prefers-reduced-motion: no-preference) {
+  .sp-count { animation: sp-count 900ms var(--ease-out-weighted) both; }
+}
+@keyframes sp-count { from { opacity: 0; transform: scale(1.4); } 30% { opacity: 1; } to { opacity: 0.85; transform: scale(1); } }
